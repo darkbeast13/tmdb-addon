@@ -35,15 +35,12 @@ export function MultiActionButton() {
     language,
     sessionId,
     ageRating,
-    catalogs: catalogs.map(catalog => ({
-      ...catalog,
-      enabled: true
-    }))
+    catalogs: [...catalogs]
   };
-  
+
   const handleInstall = () => {
     const url = generateAddonUrl(config);
-    window.location.href = url;
+    window.location.href = url.replace(/^https?:\/\//, "stremio://");
   };
 
   const handleInstallWeb = () => {
